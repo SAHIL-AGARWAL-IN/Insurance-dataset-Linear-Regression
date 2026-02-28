@@ -1,128 +1,62 @@
-🏠 House Price Prediction using Machine Learning
+# 🏥 Insurance Cost Prediction using Linear Regression
 
-This project demonstrates how to build a Regression model using Python and scikit-learn to predict house prices based on property features such as year built, renovation year, area, number of rooms, and more.
+This project demonstrates how to build a **Linear Regression model** using Python and scikit-learn to predict **insurance charges** based on personal attributes such as age, BMI, smoking status, etc.
 
 It is a beginner-friendly machine learning project focused on understanding:
+- Data preprocessing
+- Train–test split
+- Model training
+- Prediction and evaluation
+- Avoiding common mistakes like data leakage
 
-Data preprocessing
+---
 
-Handling missing values
+## 📂 Dataset
 
-Feature engineering
+The dataset used is **insurance.csv**, which contains the following columns:
 
-Encoding categorical variables
+- `age` – Age of the individual  
+- `sex` – Gender (male/female)  
+- `bmi` – Body Mass Index  
+- `children` – Number of children  
+- `smoker` – Smoking status (yes/no)  
+- `region` – Residential region  
+- `charges` – Medical insurance cost (**target variable**)
 
-Model training and evaluation
+---
 
-Avoiding common machine learning mistakes
+## 🛠️ Technologies Used
 
-📂 Dataset
+- Python  
+- Pandas  
+- NumPy  
+- scikit-learn  
+- Jupyter Notebook  
 
-The dataset used is HousePricePrediction.csv, which contains the following types of columns:
+---
 
-YearBuilt – Original construction year
+## 🚀 Project Workflow
 
-YearRemodAdd – Renovation year
+1. **Import libraries**
+2. **Load the dataset**
+3. **Separate features and target**
+4. **Split data into training and testing sets**
+5. **Train Linear Regression model**
+6. **Make predictions**
+7. **Compare Actual vs Predicted values**
+8. **Evaluate model performance**
 
-Structural features – Area, rooms, floors, etc.
+---
 
-Categorical features – Neighborhood, exterior type, etc.
+## 📌 Important Concept: Data Leakage
 
-SalePrice – House selling price (target variable)
+During development, a common issue was encountered where **Actual and Predicted values were exactly the same**.
 
-🛠️ Technologies Used
+This happened because:
+- The target column (`charges`) was mistakenly included in the feature set (`X`).
 
-Python
+✅ This was fixed by properly separating features and target:
 
-Pandas
-
-NumPy
-
-Matplotlib
-
-scikit-learn
-
-Jupyter Notebook
-
-🚀 Project Workflow
-
-Import libraries
-
-Load the dataset
-
-Explore and clean data
-
-Handle missing values
-
-Encode categorical variables
-
-Separate features and target
-
-Split data into training and testing sets
-
-Train regression model
-
-Make predictions
-
-Evaluate model performance
-
-▶️ How to Run the Project
-1️⃣ Clone the repository
-git clone https://github.com/your-username/house-price-prediction.git
-2️⃣ Navigate to the project folder
-cd house-price-prediction
-3️⃣ Install required libraries
-
-If you don’t have the required libraries installed, run:
-
-pip install pandas numpy matplotlib scikit-learn jupyter
-4️⃣ Open Jupyter Notebook
-jupyter notebook
-
-Then open Untitled.ipynb and run the cells step-by-step.
-
-📌 Important Concept: Handling Missing Values
-
-During development, one major challenge was dealing with missing data.
-
-Key steps taken:
-
-Identified columns with high NaN values
-
-Replaced missing numerical values with mean/median where appropriate
-
-Applied encoding techniques carefully after cleaning
-
-This ensured that the model was trained on clean and consistent data.
-
-📊 Model Evaluation
-
-The model performance was evaluated using:
-
-Mean Absolute Error (MAE)
-
-Mean Squared Error (MSE)
-
-R² Score
-
-Example:
-
-print("R2 Score:", r2_score(y_test, y_pred))
-
-(Replace with your actual results if needed.)
-
-🎯 Learning Outcomes
-
-Through this project, I learned:
-
-How to work with real-world housing datasets
-
-Proper feature–target separation
-
-Avoiding data leakage
-
-Feature engineering techniques
-
-Regression model evaluation
-
-Writing clean and structured ML workflows
+```python
+X = df.drop(columns=['charges'])
+y = df['charges']
